@@ -1,5 +1,6 @@
 package edu.unc.jeffrey.crowdsourcedweather;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,5 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
+        Intent newIntent = new Intent(this, WeatherMap.class);
+        startActivity(newIntent);
     }
 }
