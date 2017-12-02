@@ -7,12 +7,16 @@
 *    [{
 *    "lat": "34.54320000000000",
 *    "long": "123.23400000000000",
-*    "weather": "rain",
+*    "raining": 0,
+*    "jacket": 0,
+*    "emergency": 0,
 *    "time": 1512200033
 *}, {
 *    "lat": "38.54321222343240000",
 *    "long": "84.2344672873100",
-*    "weather": "sunny",
+*    "raining": 0,
+*    "jacket": 0,
+*    "emergency": 0,
 *    "time": 1512204631
 *}]
 *   The resultant json is a list (like []) of weather based events. 
@@ -38,7 +42,7 @@ $stmt = mysqli_prepare($con, "SELECT * FROM weatherItems;");
 mysqli_stmt_execute($stmt);
 
 /* bind result variables */
-mysqli_stmt_bind_result($stmt, $itemid, $latitude, $longitude, $weather, $time);
+mysqli_stmt_bind_result($stmt, $itemid, $latitude, $longitude, $raining, $jacket, $emergency, $time);
 
 mysqli_stmt_store_result($stmt);
 if (mysqli_stmt_num_rows($stmt) < 1){
@@ -51,7 +55,9 @@ if (mysqli_stmt_num_rows($stmt) < 1){
 	$return_item = array(
    	 'lat'      => $latitude,
    	 'long'  => $longitude,
-   	 'weather' => $weather,
+   	 'raining' => $raining,
+     'jacket' => $jacket,
+     'emergency' => $emergency,
    	 'time' => $time
 	);
 	//saving data in returned JSON object...
@@ -65,3 +71,4 @@ echo $json;
 mysqli_stmt_close($stmt);
 mysqli_close($con);
 return;
+
