@@ -253,7 +253,7 @@ public class WeatherMap extends AppCompatActivity
                                 Marker m = googleMap.addMarker(new MarkerOptions()
                                         .position(new LatLng(Double.parseDouble(obj.getString("lat")), Double.parseDouble(obj.getString("long"))))
                                         .title(new java.util.Date((long) obj.getInt("time") * 1000).toString())
-                                        .icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), obj.getInt("emergency") == 1 ? R.drawable.exclamationsmall : obj.getInt("raining") == 1 ? R.drawable.coldsmall : obj.getInt("jacket") == 1 ? R.drawable.cold : R.drawable.sunnysmall))));
+                                        .icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), obj.getInt("emergency") == 1 ? R.drawable.exclamationsmall : obj.getInt("raining") == 1 ? R.drawable.thunderstormsmall : obj.getInt("jacket") == 1 ? R.drawable.coldsmall : R.drawable.sunnysmall))));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
